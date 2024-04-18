@@ -1,1 +1,47 @@
-/* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+@import "bootstrap/dist/css/bootstrap.min.css";
+
+:root {
+  --primary-color: #34495e;
+  --secondary-color: #95a5a6;
+  --acento-color: #e74c3c;
+  --neutral-color: #ffffff;
+  --font-name: "Poppins", sans-serif;
+  --size-title: 22px;
+  --size-subtitle: 17px;
+  --size-content: 16px;
+}
+
+html {
+  margin: 0px;
+  padding: 0px;
+  font-size: var(--size-content);
+}
+
+body,
+button,
+input {
+  font-family: var(--font-name);
+  font-size: var(--size-content);
+  margin: 0px;
+  padding: 0px;
+}
+
+/* icons */
+ion-icon {
+  font-size: 1.6rem;
+  color: var(--primary_color);
+  cursor: pointer;
+}
+
+.ion-icon-green {
+  font-size: 2rem;
+  color: #00de97;
+  cursor: pointer;
+}
+
+.ion-icon-blue {
+  font-size: 1.7rem;
+  color: #2f0084;
+  cursor: pointer;
+}
