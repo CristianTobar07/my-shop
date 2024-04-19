@@ -1,5 +1,5 @@
 import { NgClass, NgIf } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
@@ -10,6 +10,7 @@ import { IonicModule } from '@ionic/angular';
 import { ErrorsFormsComponent } from '../../../../shared/components/errors-forms/errors-forms.component';
 import { ErrorFormLogin, LoginRequest } from '../../models';
 import { LoginService } from '../../services/login.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-form-login',
@@ -24,7 +25,7 @@ import { LoginService } from '../../services/login.service';
     ErrorsFormsComponent,
   ],
 })
-export class FormLoginComponent implements OnInit {
+export class FormLoginComponent implements OnInit, OnDestroy {
   form: FormGroup = this.fb.group({
     userName: [''],
     password: [''],
@@ -36,6 +37,8 @@ export class FormLoginComponent implements OnInit {
   };
 
   isShowPassword: boolean = false;
+
+  suscription: Subscription = new Subscription();
 
   constructor(private fb: FormBuilder, private loginservice: LoginService) {}
 
@@ -66,7 +69,7 @@ export class FormLoginComponent implements OnInit {
       password: this.form.value['password'],
     };
 
-    this.loginservice.setLogin(body).subscribe((res) => {
+    this.suscription = this.loginservice.setLogin(body).subscribe((res) => {
       if (!res) {
         this.errorForms.isLogin = true;
         return;
@@ -76,5 +79,9 @@ export class FormLoginComponent implements OnInit {
     });
 
     console.log('form');
+  }
+
+  ngOnDestroy(): void {
+    this.suscription.unsubscribe();
   }
 }

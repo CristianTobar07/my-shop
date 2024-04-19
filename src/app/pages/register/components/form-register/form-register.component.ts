@@ -26,7 +26,7 @@ import { RegisterService } from '../../services/register.service';
 })
 export class FormRegisterComponent implements OnInit {
   form: FormGroup = this.fb.group({
-    fistName: [''],
+    firstName: [''],
     lastName: [''],
     userName: [''],
     email: ['', Validators.email],
@@ -57,6 +57,7 @@ export class FormRegisterComponent implements OnInit {
   handleChange() {
     this.form.valueChanges.subscribe((data) => {
       this.errorForms.isInValidForm = false;
+      this.errorForms.isRegister = false;
     });
   }
 
@@ -70,7 +71,7 @@ export class FormRegisterComponent implements OnInit {
 
     const body: FormRegister = {
       name: {
-        firstname: this.form.value['userName'],
+        firstname: this.form.value['firstName'],
         lastname: this.form.value['lastName'],
       },
       username: this.form.value['userName'],

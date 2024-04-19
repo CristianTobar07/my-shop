@@ -5,11 +5,13 @@
     </div>
     <nav id="nav">
       <ul>
-        <li><a href="/">Inicio</a></li>
         <li>
-          <a href="/register">Registrarse</a>
+          <span [routerLink]="['/']">Inicio</span>
         </li>
-        <li><a href="/login">Iniciar sesión</a></li>
+        <li>
+          <span [routerLink]="['/register']">Registrarse</span>
+        </li>
+        <li><span [routerLink]="['/login']">Iniciar sesión</span></li>
       </ul>
     </nav>
     <div class="nav-responsive" (click)="mostrarOcultarMenu()">

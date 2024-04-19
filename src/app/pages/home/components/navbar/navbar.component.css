@@ -25,18 +25,19 @@
   list-style: none;
   gap: 15px;
 }
-.contenedor-header header nav ul li a {
+.contenedor-header header nav ul li span {
   text-align: none;
   color: var(--secondary-color);
   margin: 0 0px;
   padding: 3px;
   transition: 0.5s;
   text-decoration: none;
+  cursor: default;
+}
+.contenedor-header header nav ul li span:hover {
+  color: var(--primary-color);
+}
 
-}
-.contenedor-header header nav ul li a:hover {
-  color: #808000;
-}
 .nav-responsive {
   display: flex;
   align-items: center;
