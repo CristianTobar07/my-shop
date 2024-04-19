@@ -6,7 +6,17 @@ export const setProducts = createAction(
   props<{ data: Product[] }>()
 );
 
+export const setFilterProducts = createAction(
+  '[Data SetFilterProducts] setFilterProducts',
+  props<{ valueName: string }>()
+);
+
 export const showModalProduct = createAction(
   '[Data ShowModalProduct] showModalProduct',
   props<{ value: boolean }>()
+);
+
+export const addProduct = createAction(
+  '[Data addProduct] addProduct',
+  props<{ product: Product }>()
 );

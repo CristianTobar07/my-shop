@@ -10,7 +10,6 @@ import { FlotingAlertComponent } from 'shared/components/floting-alert/floting-a
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css',
   standalone: true,
   imports: [CommonModule, RouterOutlet, FlotingAlertComponent],
 })

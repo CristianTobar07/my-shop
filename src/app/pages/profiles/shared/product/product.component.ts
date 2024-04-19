@@ -4,8 +4,9 @@ import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { Store } from '@ngrx/store';
 import { Product } from 'pages/login/models';
+import { handleKeyDown } from 'shared/middleware/number.middleware';
 import { setIsErrorMessage } from 'store/actions/error-message.actions';
-import { showModalProduct } from 'store/actions/products.action';
+import { addProduct, showModalProduct } from 'store/actions/products.action';
 import { AppState } from 'store/app.state';
 
 @Component({
@@ -65,9 +66,39 @@ export class ProductComponent implements OnInit {
     }
   }
 
+  handleKeyDown(e: any) {
+    handleKeyDown(e);
+  }
+
   handleDecline() {
     this.store.dispatch(showModalProduct({ value: false }));
   }
 
-  handleSubmit() {}
+  handleSubmit() {
+    if (this.form.invalid) {
+      this.store.dispatch(
+        setIsErrorMessage({ message: 'Complete todos los campos' })
+      );
+      return;
+    }
+
+    if (!this.image) {
+      this.store.dispatch(
+        setIsErrorMessage({ message: 'Cargue la imagen del producto' })
+      );
+      return;
+    }
+
+    const product: Product = {
+      id: NaN,
+      title: this.form.value['nameProduct'],
+      price: this.form.value['price'],
+      count: this.form.value['quantity'],
+      description: this.form.value['description'],
+      image: this.image,
+    };
+
+    this.store.dispatch(addProduct({ product }));
+    this.store.dispatch(showModalProduct({ value: false }));
+  }
 }

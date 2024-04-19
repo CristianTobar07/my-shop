@@ -18,5 +18,6 @@ export interface InitialStateErrorMessage {
 
 export interface InitialStateProductsComponent {
   products: Product[];
+  productRef: Product[];
   isModalProduct: boolean;
 }

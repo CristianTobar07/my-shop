@@ -11,7 +11,13 @@
           class="my-shop-input-load-image"
           (change)="onChangeLoadImage($event)"
         />
-        <img *ngIf="image" src="{{ image }}" alt="" height="90%" width="90%" />
+        <img
+          *ngIf="image"
+          src="{{ image }}"
+          alt=""
+          height="100%"
+          width="100%"
+        />
         <ion-icon *ngIf="!image" name="image-outline" class="icon"></ion-icon>
       </div>
 
@@ -29,15 +35,19 @@
           formControlName="price"
           class="my-shop-input"
           placeholder="Precio"
+          maxlength="6"
           required
+          (keydown)="handleKeyDown($event)"
         />
 
         <input
-          type="text"
+          type="tel"
           formControlName="quantity"
           class="my-shop-input"
           placeholder="Cantidad"
+          maxlength="5"
           required
+          (keydown)="handleKeyDown($event)"
         />
       </div>
     </section>
@@ -46,7 +56,10 @@
 
     <textarea
       class="my-shop-textarea"
+      formControlName="description"
       placeholder="Descripción del producto"
+      required
+      maxlength="500"
     ></textarea>
 
     <section class="container-button">

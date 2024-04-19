@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
+import { setFilterProducts } from 'store/actions/products.action';
 import { AppState } from 'store/app.state';
 
 @Component({
@@ -25,7 +26,13 @@ export class FormSearchProductsComponent implements OnInit, OnDestroy {
     this.handleChangeForm();
   }
 
-  handleChangeForm() {}
+  handleChangeForm() {
+    const suscription = this.form.valueChanges.subscribe((data) => {
+      this.store.dispatch(setFilterProducts({ valueName: data.productName }));
+    });
+
+    this.suscription.push(suscription);
+  }
 
   ngOnDestroy(): void {
     this.suscription.forEach((suscription) => {
