@@ -55,6 +55,7 @@ export class FormLoginComponent implements OnInit {
 
   handleSubmit() {
     this.errorForms.isLogin = false;
+    this.errorForms.isInValidForm = false;
 
     if (this.form.invalid) {
       this.errorForms.isInValidForm = true;
