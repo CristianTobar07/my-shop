@@ -1,0 +1,55 @@
+.container-principal {
+  width: 90%;
+  margin-left: 5%;
+  box-shadow: 11px 11px 31px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  padding-bottom: 2%;
+}
+
+.container-image {
+  height: 200px;
+}
+
+img {
+  object-fit: cover;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+/* Description product */
+
+.container-description-product {
+  padding-inline: 20px;
+  padding-block: 5%;
+  border-bottom: 1px solid var(--placeholder-color);
+}
+
+p {
+  color: var(--primary-color);
+  padding: 0;
+  margin: 0;
+}
+
+/* Section buttons */
+
+.container-buttons {
+  display: flex;
+  justify-content: center;
+  margin-top: 3%;
+  width: 100%;
+  gap: 10px;
+}
+
+button {
+  background-color: transparent;
+  border: none;
+  outline: none;
+}
+
+button:hover {
+  border-bottom: 1px solid var(--primary-color);
+}
+
+button:active {
+  opacity: 0.5;
+}

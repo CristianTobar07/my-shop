@@ -1,3 +1,12 @@
-<p>
-  body-admin works!
-</p>
+<div class="container-body">
+  <section class="container-add-product">
+    <button class="my-shop-button">Agregar producto</button>
+  </section>
+
+  <section class="container-products">
+    <app-cards-products
+      *ngFor="let product of products"
+      [product]="product"
+    ></app-cards-products>
+  </section>
+</div>
