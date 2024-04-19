@@ -1,6 +1,8 @@
-
 <app-loading [isLoading]="isLoading"></app-loading>
 <app-header-admin></app-header-admin>
-<app-product *ngIf="isShowModalProduct"></app-product>
+<app-product
+  *ngIf="isShowModalProduct"
+  [product]="product"
+  [isEdit]="isEdit"
+></app-product>
 <app-body-admin></app-body-admin>
-

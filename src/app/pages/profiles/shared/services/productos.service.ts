@@ -22,7 +22,11 @@ export class ProductosService {
       .get<Product[]>(BASE_URL + 'products/category/electronics')
       .subscribe({
         next: (response) => {
-          this.store.dispatch(setProducts({ data: dataProducts }));
+          const products = localStorage.getItem('@products');
+
+          this.store.dispatch(
+            setProducts({ data: products ? JSON.parse(products) : [] })
+          );
           this.store.dispatch(setIsLoading({ value: false }));
         },
         error: (error) => {

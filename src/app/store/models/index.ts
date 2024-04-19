@@ -20,4 +20,7 @@ export interface InitialStateProductsComponent {
   products: Product[];
   productRef: Product[];
   isModalProduct: boolean;
+  productSelected?: Product;
+  isEdit: boolean;
+  isNew: boolean;
 }

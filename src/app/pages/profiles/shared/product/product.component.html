@@ -3,70 +3,81 @@
   align="center"
 >
   <form [formGroup]="form" align="center" (submit)="handleSubmit()">
-    <section class="container-image-data">
-      <div class="container-image">
-        <input
-          type="file"
-          accept="image/jpeg,image/png"
-          class="my-shop-input-load-image"
-          (change)="onChangeLoadImage($event)"
-        />
-        <img
-          *ngIf="image"
-          src="{{ image }}"
-          alt=""
-          height="100%"
-          width="100%"
-        />
-        <ion-icon *ngIf="!image" name="image-outline" class="icon"></ion-icon>
-      </div>
+    <section [ngClass]="{ 'my-shop-enable-content': !isEdit }">
+      <section class="container-image-data">
+        <div class="container-image">
+          <input
+            type="file"
+            accept="image/jpeg,image/png"
+            class="my-shop-input-load-image"
+            (change)="onChangeLoadImage($event)"
+          />
+          <img
+            *ngIf="image"
+            src="{{ image }}"
+            alt=""
+            height="100%"
+            width="100%"
+          />
+          <ion-icon *ngIf="!image" name="image-outline" class="icon"></ion-icon>
+        </div>
 
-      <div class="form">
-        <input
-          type="text"
-          formControlName="nameProduct"
-          class="my-shop-input"
-          placeholder="Nombre del producto"
-          required
-        />
+        <div class="form">
+          <input
+            type="text"
+            formControlName="nameProduct"
+            class="my-shop-input"
+            placeholder="Nombre del producto"
+            required
+          />
 
-        <input
-          type="tel"
-          formControlName="price"
-          class="my-shop-input"
-          placeholder="Precio"
-          maxlength="6"
-          required
-          (keydown)="handleKeyDown($event)"
-        />
+          <input
+            type="tel"
+            formControlName="price"
+            class="my-shop-input"
+            placeholder="Precio"
+            maxlength="6"
+            required
+            (keydown)="handleKeyDown($event)"
+          />
 
-        <input
-          type="tel"
-          formControlName="quantity"
-          class="my-shop-input"
-          placeholder="Cantidad"
-          maxlength="5"
-          required
-          (keydown)="handleKeyDown($event)"
-        />
-      </div>
+          <input
+            type="tel"
+            formControlName="count"
+            class="my-shop-input"
+            placeholder="Cantidad"
+            maxlength="5"
+            required
+            (keydown)="handleKeyDown($event)"
+          />
+        </div>
+      </section>
+
+      <br />
+
+      <textarea
+        class="my-shop-textarea"
+        formControlName="description"
+        placeholder="Descripción del producto"
+        required
+        maxlength="500"
+      ></textarea>
     </section>
-
-    <br />
-
-    <textarea
-      class="my-shop-textarea"
-      formControlName="description"
-      placeholder="Descripción del producto"
-      required
-      maxlength="500"
-    ></textarea>
 
     <section class="container-button">
       <button class="my-shop-button-white" (click)="handleDecline()">
-        Cancelar
+        Atrás
       </button>
-      <button class="my-shop-button">Guardar</button>
+      <button
+        class="my-shop-button"
+        [ngClass]="{
+          'my-shop-enable-content my-shop-enable-content-opacity':
+            product && !isEdit
+        }"
+        type="submit"
+      >
+        Guardar
+      </button>
     </section>
   </form>
 </div>

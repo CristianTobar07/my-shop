@@ -4,7 +4,11 @@ import { Store } from '@ngrx/store';
 import { Product } from 'pages/login/models';
 import { CardsProductsComponent } from 'pages/profiles/shared/cards-products/cards-products.component';
 import { Subscription } from 'rxjs';
-import { showModalProduct } from 'store/actions/products.action';
+import {
+  selectProduct,
+  setIsEditNewProduct,
+  showModalProduct,
+} from 'store/actions/products.action';
 import { AppState } from 'store/app.state';
 import { selecProducts } from 'store/selectors';
 
@@ -35,5 +39,7 @@ export class BodyAdminComponent implements OnInit, OnDestroy {
 
   addproduct() {
     this.store.dispatch(showModalProduct({ value: true }));
+    this.store.dispatch(selectProduct({ product: undefined }));
+    this.store.dispatch(setIsEditNewProduct({ isEdit: false, isNew: true }));
   }
 }

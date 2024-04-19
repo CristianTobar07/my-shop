@@ -3,16 +3,24 @@ import { setIsLoading } from '../actions/loading.actions';
 import { InitialStateProductsComponent } from '../models';
 import {
   addProduct,
+  deleteProduct,
+  editProduct,
+  selectProduct,
   setFilterProducts,
+  setIsEditNewProduct,
   setProducts,
   showModalProduct,
 } from 'store/actions/products.action';
 import { Product } from 'pages/login/models';
+import { saveDataStorage } from 'shared/middleware/store-data.middleware';
 
 export const initialStateLoading: InitialStateProductsComponent = {
   products: [],
   productRef: [],
   isModalProduct: false,
+  productSelected: undefined,
+  isEdit: false,
+  isNew: false,
 };
 
 export const productsReducer = createReducer(
@@ -46,14 +54,58 @@ export const productsReducer = createReducer(
       isModalProduct: value,
     };
   }),
+  // Add product in DB
   on(addProduct, (state, { product }) => {
     const productRef = [...state.products];
 
-    productRef.push(product);
+    productRef.push({ ...product, id: state.products.length + 1 });
+
+    saveDataStorage(productRef);
 
     return {
       ...state,
       products: productRef,
+    };
+  }),
+
+  // Select one product for see or edit informacion
+  on(selectProduct, (state, { product }) => {
+    return {
+      ...state,
+      productSelected: product,
+    };
+  }),
+
+  // set when the action is edit produc or new product
+  on(setIsEditNewProduct, (state, { isEdit, isNew }) => {
+    return {
+      ...state,
+      isEdit,
+      isNew,
+    };
+  }),
+
+  on(editProduct, (state, { product }) => {
+    const newProduct = state.products.map((item) => {
+      if (item.id === product.id) {
+        return { ...product };
+      }
+      return { ...item };
+    });
+
+    return {
+      ...state,
+      products: newProduct,
+    };
+  }),
+
+  // Delete product
+  on(deleteProduct, (state, { id }) => {
+    const newProducts = state.products.filter((product) => product.id !== id);
+    saveDataStorage(newProducts);
+    return {
+      ...state,
+      products: newProducts,
     };
   })
 );

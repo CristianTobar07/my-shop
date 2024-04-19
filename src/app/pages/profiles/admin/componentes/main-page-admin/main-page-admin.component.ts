@@ -9,6 +9,7 @@ import { AppState } from 'store/app.state';
 import { Subscription } from 'rxjs';
 import { ProductComponent } from 'pages/profiles/shared/product/product.component';
 import { NgIf } from '@angular/common';
+import { Product } from 'pages/login/models';
 
 @Component({
   selector: 'app-main-page-admin',
@@ -26,6 +27,8 @@ import { NgIf } from '@angular/common';
 export class MainPageAdminComponent implements OnInit, OnDestroy {
   isLoading: boolean = false;
   isShowModalProduct: boolean = false;
+  product?: Product;
+  isEdit: boolean = false;
 
   suscription: Subscription[] = [];
 
@@ -43,6 +46,8 @@ export class MainPageAdminComponent implements OnInit, OnDestroy {
 
     const suscription2 = this.store.select(selecProducts).subscribe((data) => {
       this.isShowModalProduct = data.isModalProduct;
+      this.product = data.productSelected;
+      this.isEdit = data.isEdit;
     });
 
     this.suscription.push(suscription1);
