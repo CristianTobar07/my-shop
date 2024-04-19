@@ -1,0 +1,49 @@
+<div class="container-principal">
+  <form [formGroup]="form" align="center" (submit)="handleSubmit()">
+    <div>
+      <input
+        type="text"
+        formControlName="userName"
+        class="my-shop-input"
+        placeholder="Nombre de usuario"
+        required
+      />
+    </div>
+
+    <div>
+      <div class="my-shop-input">
+        <input
+          [type]="isShowPassword ? 'text' : 'password'"
+          class="my-shop-input-password"
+          placeholder="Contraseñas"
+          formControlName="password"
+          maxlength="40"
+          required
+        />
+        <ion-icon
+          *ngIf="!isShowPassword"
+          name="eye-outline"
+          (click)="showPassword()"
+        ></ion-icon>
+
+        <ion-icon
+          *ngIf="isShowPassword"
+          name="eye-off-outline"
+          (click)="showPassword()"
+        ></ion-icon>
+      </div>
+    </div>
+
+    <app-errors-forms
+      *ngIf="errorForms.isInValidForm"
+      message="Complete correctamente todos los campos"
+    ></app-errors-forms>
+
+    <app-errors-forms
+      *ngIf="errorForms.isLogin"
+      message="Usuario o contraseña incorrectos"
+    ></app-errors-forms>
+
+    <button class="my-shop-button" type="submit">Ingresar</button>
+  </form>
+</div>

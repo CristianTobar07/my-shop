@@ -1,0 +1,17 @@
+.container-errors {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding-top: 2px;
+  gap: 5px;
+}
+
+span {
+  font-size: 13px;
+  color: red;
+}
+
+.icon{
+  color: red;
+  font-size: 13px;
+}

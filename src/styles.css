@@ -4,10 +4,10 @@
 :root {
   --primary-color: #34495e;
   --secondary-color: #95a5a6;
-  --acento-color: #e74c3c;
+  --placeholder-color: #c1c1c1;
   --neutral-color: #ffffff;
   --font-name: "Poppins", sans-serif;
-  --size-title: 22px;
+  --size-title: 35px;
   --size-subtitle: 17px;
   --size-content: 16px;
 }
@@ -34,14 +34,52 @@ ion-icon {
   cursor: pointer;
 }
 
-.ion-icon-green {
-  font-size: 2rem;
-  color: #00de97;
-  cursor: pointer;
+/* Inputs */
+
+.my-shop-input {
+  display: flex;
+  border: 1px solid var(--secondary-color);
+  border-radius: 5px;
+  padding: 7px 15px;
+  width: 100%;
+  color: var(--primary-color);
+  outline: none;
 }
 
-.ion-icon-blue {
-  font-size: 1.7rem;
-  color: #2f0084;
-  cursor: pointer;
+.my-shop-input:focus {
+  box-shadow: 0px 0px 15px 0px #00000040;
+}
+
+.my-shop-input::placeholder {
+  color: var(--placeholder-color);
+  font-weight: 300;
+}
+
+/* Input password */
+
+.my-shop-input-password {
+  display: flex;
+  outline: none;
+  border: none;
+  width: 100%;
+}
+
+.my-shop-input-password::placeholder {
+  color: var(--placeholder-color);
+  font-weight: 300;
+}
+
+/* Buttons */
+
+.my-shop-button {
+  border: none;
+  outline: none;
+  background-color: var(--primary-color);
+  color: var(--neutral-color);
+  padding: 7px;
+  border-radius: 5px;
+}
+
+.my-shop-button:active {
+  opacity: 0.5;
 }
