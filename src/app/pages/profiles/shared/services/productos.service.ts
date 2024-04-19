@@ -7,6 +7,7 @@ import { BASE_URL } from 'shared/constants';
 import { setIsLoading } from 'store/actions/loading.actions';
 import { setProducts } from 'store/actions/products.action';
 import { AppState } from 'store/app.state';
+import { dataProducts } from '../constants';
 
 @Injectable({
   providedIn: 'root',
@@ -21,7 +22,7 @@ export class ProductosService {
       .get<Product[]>(BASE_URL + 'products/category/electronics')
       .subscribe({
         next: (response) => {
-          this.store.dispatch(setProducts({ data: response }));
+          this.store.dispatch(setProducts({ data: dataProducts }));
           this.store.dispatch(setIsLoading({ value: false }));
         },
         error: (error) => {

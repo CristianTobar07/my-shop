@@ -1,0 +1,59 @@
+<div
+  class="container-products animate__animated animate__fadeInDown animate__delay-0.5s"
+  align="center"
+>
+  <form [formGroup]="form" align="center" (submit)="handleSubmit()">
+    <section class="container-image-data">
+      <div class="container-image">
+        <input
+          type="file"
+          accept="image/jpeg,image/png"
+          class="my-shop-input-load-image"
+          (change)="onChangeLoadImage($event)"
+        />
+        <img *ngIf="image" src="{{ image }}" alt="" height="90%" width="90%" />
+        <ion-icon *ngIf="!image" name="image-outline" class="icon"></ion-icon>
+      </div>
+
+      <div class="form">
+        <input
+          type="text"
+          formControlName="nameProduct"
+          class="my-shop-input"
+          placeholder="Nombre del producto"
+          required
+        />
+
+        <input
+          type="tel"
+          formControlName="price"
+          class="my-shop-input"
+          placeholder="Precio"
+          required
+        />
+
+        <input
+          type="text"
+          formControlName="quantity"
+          class="my-shop-input"
+          placeholder="Cantidad"
+          required
+        />
+      </div>
+    </section>
+
+    <br />
+
+    <textarea
+      class="my-shop-textarea"
+      placeholder="Descripción del producto"
+    ></textarea>
+
+    <section class="container-button">
+      <button class="my-shop-button-white" (click)="handleDecline()">
+        Cancelar
+      </button>
+      <button class="my-shop-button">Guardar</button>
+    </section>
+  </form>
+</div>

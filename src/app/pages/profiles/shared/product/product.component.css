@@ -1,0 +1,85 @@
+.container-products {
+  display: scroll;
+  position: absolute;
+  width: 55%;
+  margin-top: 1%;
+  margin-left: 20%;
+  padding: 2%;
+  background-color: var(--neutral-color);
+  box-shadow: 0px 0px 17px 0px rgba(0, 0, 0, 0.25);
+}
+
+/* Container image data lot */
+
+.container-image-data {
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  width: 100%;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-column-gap: 10px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+}
+
+textarea {
+  width: 98%;
+}
+
+/* Image */
+
+.container-image {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+  height: 200px;
+  z-index: 1;
+
+  & img {
+    border-radius: 10px;
+    object-fit: cover;
+  }
+}
+
+.icon {
+  font-size: 200px;
+  color: var(--secondary-color);
+}
+
+.container-button {
+  margin-top: 2%;
+  display: grid;
+  gap: 15px;
+  padding-inline: 20%;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+@media only screen and (max-width: 767px) {
+  /* Estilos para dispositivos móviles (menos de 768px de ancho) */
+  /* Por ejemplo: */
+
+  .container-products {
+    width: 90%;
+    margin-left: 5%;
+    height: 80%;
+  }
+
+  .container-image {
+    width: 90%;
+  }
+
+  .container-button {
+    display: grid;
+    gap: 15px;
+    padding-inline: 0%;
+    grid-template-columns: repeat(1, 1fr);
+  }
+}

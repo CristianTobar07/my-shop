@@ -4,6 +4,7 @@ import { Store } from '@ngrx/store';
 import { Product } from 'pages/login/models';
 import { CardsProductsComponent } from 'pages/profiles/shared/cards-products/cards-products.component';
 import { Subscription } from 'rxjs';
+import { showModalProduct } from 'store/actions/products.action';
 import { AppState } from 'store/app.state';
 import { selecProducts } from 'store/selectors';
 
@@ -30,5 +31,9 @@ export class BodyAdminComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.suscription.forEach((suscription) => suscription.unsubscribe());
+  }
+
+  addproduct() {
+    this.store.dispatch(showModalProduct({ value: true }));
   }
 }

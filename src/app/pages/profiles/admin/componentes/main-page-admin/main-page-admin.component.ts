@@ -3,22 +3,31 @@ import { HeaderAdminComponent } from '../header-admin/header-admin.component';
 import { BodyAdminComponent } from '../body-admin/body-admin.component';
 import { ProductosService } from 'pages/profiles/shared/services/productos.service';
 import { LoadingComponent } from 'shared/components/loading/loading.component';
-import { selectLoading } from 'store/selectors';
+import { selecProducts, selectLoading } from 'store/selectors';
 import { Store } from '@ngrx/store';
 import { AppState } from 'store/app.state';
 import { Subscription } from 'rxjs';
+import { ProductComponent } from 'pages/profiles/shared/product/product.component';
+import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-main-page-admin',
   templateUrl: './main-page-admin.component.html',
   styleUrls: ['./main-page-admin.component.css'],
   standalone: true,
-  imports: [HeaderAdminComponent, BodyAdminComponent, LoadingComponent],
+  imports: [
+    NgIf,
+    HeaderAdminComponent,
+    BodyAdminComponent,
+    LoadingComponent,
+    ProductComponent,
+  ],
 })
 export class MainPageAdminComponent implements OnInit, OnDestroy {
   isLoading: boolean = false;
+  isShowModalProduct: boolean = false;
 
-  suscription: Subscription = new Subscription();
+  suscription: Subscription[] = [];
 
   constructor(
     private productsservice: ProductosService,
@@ -28,12 +37,21 @@ export class MainPageAdminComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.productsservice.getAllProducts();
 
-    this.suscription = this.store.select(selectLoading).subscribe((data) => {
+    const suscription1 = this.store.select(selectLoading).subscribe((data) => {
       this.isLoading = data.isLoading;
     });
+
+    const suscription2 = this.store.select(selecProducts).subscribe((data) => {
+      this.isShowModalProduct = data.isModalProduct;
+    });
+
+    this.suscription.push(suscription1);
+    this.suscription.push(suscription2);
   }
 
   ngOnDestroy(): void {
-    this.suscription.unsubscribe();
+    this.suscription.forEach((suscription) => {
+      suscription.unsubscribe();
+    });
   }
 }

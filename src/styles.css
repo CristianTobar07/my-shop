@@ -100,8 +100,20 @@ ion-icon {
 
 /* Buttons */
 
+.my-shop-button-white {
+  border: none;
+  outline: none;
+  border: 1px solid var(--primary-color);
+  color: var(--primary-color);
+  padding: 7px 15px;
+  border-radius: 5px;
+}
+
+.my-shop-button-white:active {
+  opacity: 0.5;
+}
+
 .my-shop-button {
-  width: 100%;
   border: none;
   outline: none;
   background-color: var(--primary-color);
@@ -121,4 +133,35 @@ ion-icon {
   white-space: nowrap;
   overflow: hidden;
   max-width: max-content;
+}
+
+/* Input load image */
+
+.my-shop-input-load-image {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  outline: none;
+  opacity: 0;
+  background-color: red;
+  cursor: pointer;
+  z-index: 3;
+}
+
+/* Text Area */
+
+.my-shop-textarea {
+  width: max-content;
+  border: 1px solid var(--secondary-color);
+  border-radius: 5px;
+  color: var(--primary-color);
+  font-size: var(--size-content);
+  min-height: 100px;
+  font-family: var(--font-name);
+  outline: none;
+  padding: 5px;
+}
+
+.my-shop-textarea::placeholder {
+  color: var(--placeholder-color);
 }
