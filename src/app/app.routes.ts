@@ -12,5 +12,10 @@ export const routes: Routes = [
     loadChildren: () =>
       import('pages/profiles/admin/admin.routes').then((route) => route.routes),
   },
+  {
+    path: 'user',
+    loadChildren: () =>
+      import('pages/profiles/buyer/buyer.routes').then((route) => route.routes),
+  },
   { path: '*', redirectTo: '' },
 ];
