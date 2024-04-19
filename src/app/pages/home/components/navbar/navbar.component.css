@@ -5,6 +5,7 @@
   left: 0;
   margin: 0;
   box-shadow: 0px 0px 17px 0px #00000040;
+  z-index: 99;
 }
 
 .contenedor-header header {
@@ -57,6 +58,7 @@
 @media screen and (max-width: 980px) {
   nav {
     display: none;
+    z-index: 99;
   }
   .nav-responsive {
     display: block;

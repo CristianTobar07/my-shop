@@ -1,5 +1,5 @@
 import { NgClass, NgIf } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
@@ -10,6 +10,7 @@ import { IonicModule } from '@ionic/angular';
 import { ErrorsFormsComponent } from '../../../../shared/components/errors-forms/errors-forms.component';
 import { ErrorFormRegister, FormRegister, RegisterRequest } from '../../models';
 import { RegisterService } from '../../services/register.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-form-register',
@@ -24,7 +25,7 @@ import { RegisterService } from '../../services/register.service';
     ErrorsFormsComponent,
   ],
 })
-export class FormRegisterComponent implements OnInit {
+export class FormRegisterComponent implements OnInit, OnDestroy {
   form: FormGroup = this.fb.group({
     firstName: [''],
     lastName: [''],
@@ -40,6 +41,8 @@ export class FormRegisterComponent implements OnInit {
   };
 
   isShowPassword: boolean = false;
+
+  suscription: Subscription = new Subscription();
 
   constructor(
     private fb: FormBuilder,
@@ -80,15 +83,21 @@ export class FormRegisterComponent implements OnInit {
       phone: this.form.value['password'],
     };
 
-    this.registerservice.setRegister(body).subscribe((res) => {
-      if (!res) {
-        this.errorForms.isRegister = true;
-        return;
-      }
+    this.suscription = this.registerservice
+      .setRegister(body)
+      .subscribe((res) => {
+        if (!res) {
+          this.errorForms.isRegister = true;
+          return;
+        }
 
-      alert('¡Usuario creado correctamente!');
-    });
+        alert('¡Usuario creado correctamente!');
+      });
 
     console.log('form');
+  }
+
+  ngOnDestroy(): void {
+    this.suscription.unsubscribe();
   }
 }

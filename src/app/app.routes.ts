@@ -7,5 +7,10 @@ export const routes: Routes = [
   { path: '', component: MainPageHomeComponent },
   { path: 'login', component: MainPageLoginComponent },
   { path: 'register', component: MainPageRegisterComponent },
+  {
+    path: 'admin',
+    loadChildren: () =>
+      import('pages/profiles/admin/admin.routes').then((route) => route.routes),
+  },
   { path: '*', redirectTo: '' },
 ];

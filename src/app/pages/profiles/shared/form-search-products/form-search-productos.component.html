@@ -1,0 +1,19 @@
+<div class="container-search">
+  <div class="container-input-search">
+    <div class="container-icons-filter">
+      <ion-icon name="search-outline"></ion-icon>
+    </div>
+    <form [formGroup]="form" class="container-form-filter">
+      <input
+        type="text"
+        formControlName="productName"
+        maxlength="50"
+        placeholder="¿Que producto buscas?"
+        pattern="^[a-zA-ZáéíóúñÁÉÍÓÚñÑ,.\s]{10,100}$"
+      />
+    </form>
+    <div class="container-icons-filter">
+      <ion-icon name="filter-outline"></ion-icon>
+    </div>
+  </div>
+</div>
