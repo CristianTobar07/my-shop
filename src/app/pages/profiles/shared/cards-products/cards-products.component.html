@@ -15,7 +15,7 @@
     <p>Unidades: {{ product.count }}</p>
   </section>
 
-  <section class="container-buttons">
+  <section class="container-buttons" *ngIf="!idRole">
     <button (click)="selectProduct(product, 1)">Ver</button>
     <button (click)="selectProduct(product, 2)">Editar</button>
     <button (click)="deleteProduct(product.id)">Eliminar</button>

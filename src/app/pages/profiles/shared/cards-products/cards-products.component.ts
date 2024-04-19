@@ -19,6 +19,7 @@ import { AppState } from 'store/app.state';
 })
 export class CardsProductsComponent implements OnInit {
   @Input() product?: Product = undefined;
+  @Input() idRole?: number;
 
   constructor(private store: Store<AppState>) {}
 

@@ -18,7 +18,6 @@ export class HeaderAdminComponent implements OnInit {
   ngOnInit() {}
 
   handleLogout() {
-    localStorage.clear();
     this.router.navigate([ROUTES.HOME]);
   }
 }

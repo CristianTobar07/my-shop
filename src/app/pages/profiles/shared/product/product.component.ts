@@ -23,6 +23,7 @@ import { AppState } from 'store/app.state';
 export class ProductComponent implements OnInit {
   @Input() product?: Product;
   @Input() isEdit: boolean = false;
+  @Input() idRole?: number;
 
   dataImage: any = undefined;
   image: any = undefined;

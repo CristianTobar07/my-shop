@@ -3,7 +3,7 @@
   align="center"
 >
   <form [formGroup]="form" align="center" (submit)="handleSubmit()">
-    <section [ngClass]="{ 'my-shop-enable-content': !isEdit }">
+    <section [ngClass]="{ 'my-shop-enable-content': product && !isEdit }">
       <section class="container-image-data">
         <div class="container-image">
           <input
@@ -64,7 +64,7 @@
       ></textarea>
     </section>
 
-    <section class="container-button">
+    <section class="container-button" *ngIf="!idRole">
       <button class="my-shop-button-white" (click)="handleDecline()">
         Atrás
       </button>
