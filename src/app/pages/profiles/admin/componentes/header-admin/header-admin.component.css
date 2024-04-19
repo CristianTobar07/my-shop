@@ -10,3 +10,13 @@ header {
   padding-block: 20px;
   margin: 0;
 }
+
+.container-name-logout {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.icon {
+  font-size: var(--size-title);
+}

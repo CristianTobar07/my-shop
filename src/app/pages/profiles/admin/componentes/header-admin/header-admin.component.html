@@ -1,4 +1,11 @@
 <header>
-  <app-titles [title]="'Cristian Tobar'"></app-titles>
+  <section class="container-name-logout">
+    <app-titles [title]="'Administrador'"></app-titles>
+    <ion-icon
+      name="log-out-outline"
+      class="icon"
+      (click)="handleLogout()"
+    ></ion-icon>
+  </section>
   <app-form-search-productos></app-form-search-productos>
 </header>

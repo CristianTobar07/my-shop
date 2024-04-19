@@ -49,9 +49,13 @@ input {
 
 /* icons */
 ion-icon {
-  font-size: 1.6rem;
-  color: var(--primary_color);
+  font-size: 20px;
+  color: var(--primary-color);
   cursor: pointer;
+}
+
+ion-icon:active {
+  opacity: 0.5;
 }
 
 /* Titles */
@@ -101,6 +105,7 @@ ion-icon {
 /* Buttons */
 
 .my-shop-button-white {
+  display: block;
   border: none;
   outline: none;
   border: 1px solid var(--primary-color);
@@ -171,7 +176,6 @@ ion-icon {
 .my-shop-enable-content {
   pointer-events: none;
 }
-
 
 .my-shop-enable-content-opacity {
   pointer-events: none;

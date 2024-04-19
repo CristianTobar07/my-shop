@@ -11,6 +11,8 @@ import { ErrorsFormsComponent } from '../../../../shared/components/errors-forms
 import { ErrorFormLogin, LoginRequest } from '../../models';
 import { LoginService } from '../../services/login.service';
 import { Subscription } from 'rxjs';
+import { Router } from '@angular/router';
+import { ROUTES } from 'shared/constants';
 
 @Component({
   selector: 'app-form-login',
@@ -40,7 +42,11 @@ export class FormLoginComponent implements OnInit, OnDestroy {
 
   suscription: Subscription = new Subscription();
 
-  constructor(private fb: FormBuilder, private loginservice: LoginService) {}
+  constructor(
+    private fb: FormBuilder,
+    private loginservice: LoginService,
+    private router: Router
+  ) {}
 
   ngOnInit() {
     this.handleChange();
@@ -75,10 +81,13 @@ export class FormLoginComponent implements OnInit, OnDestroy {
         return;
       }
 
-      alert('Logueado');
+      if (body.username === 'kate_h' && body.password === 'kfejk@*_') {
+        this.router.navigate([ROUTES.ADMIN]);
+        return;
+      } else {
+        this.router.navigate([ROUTES.USER]);
+      }
     });
-
-    console.log('form');
   }
 
   ngOnDestroy(): void {
