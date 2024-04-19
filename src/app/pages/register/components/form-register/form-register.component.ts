@@ -8,13 +8,13 @@ import {
 } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { ErrorsFormsComponent } from '../../../../shared/components/errors-forms/errors-forms.component';
-import { ErrorFormLogin, LoginRequest } from '../../models';
-import { LoginService } from '../../services/login.service';
+import { ErrorFormRegister, FormRegister, RegisterRequest } from '../../models';
+import { RegisterService } from '../../services/register.service';
 
 @Component({
-  selector: 'app-form-login',
-  templateUrl: './form-login.component.html',
-  styleUrls: ['./form-login.component.css'],
+  selector: 'app-form-register',
+  templateUrl: './form-register.component.html',
+  styleUrls: ['../../../login/components/form-login/form-login.component.css'],
   standalone: true,
   imports: [
     NgIf,
@@ -24,20 +24,27 @@ import { LoginService } from '../../services/login.service';
     ErrorsFormsComponent,
   ],
 })
-export class FormLoginComponent implements OnInit {
+export class FormRegisterComponent implements OnInit {
   form: FormGroup = this.fb.group({
+    fistName: [''],
+    lastName: [''],
     userName: [''],
+    email: ['', Validators.email],
     password: [''],
+    phone: [''],
   });
 
-  errorForms: ErrorFormLogin = {
+  errorForms: ErrorFormRegister = {
     isInValidForm: false,
-    isLogin: false,
+    isRegister: false,
   };
 
   isShowPassword: boolean = false;
 
-  constructor(private fb: FormBuilder, private loginservice: LoginService) {}
+  constructor(
+    private fb: FormBuilder,
+    private registerservice: RegisterService
+  ) {}
 
   ngOnInit() {
     this.handleChange();
@@ -54,24 +61,31 @@ export class FormLoginComponent implements OnInit {
   }
 
   handleSubmit() {
-    this.errorForms.isLogin = false;
+    this.errorForms.isInValidForm = false;
 
     if (this.form.invalid) {
       this.errorForms.isInValidForm = true;
+      return;
     }
 
-    const body: LoginRequest = {
+    const body: FormRegister = {
+      name: {
+        firstname: this.form.value['userName'],
+        lastname: this.form.value['lastName'],
+      },
       username: this.form.value['userName'],
+      email: this.form.value['password'],
       password: this.form.value['password'],
+      phone: this.form.value['password'],
     };
 
-    this.loginservice.setLogin(body).subscribe((res) => {
+    this.registerservice.setRegister(body).subscribe((res) => {
       if (!res) {
-        this.errorForms.isLogin = true;
+        this.errorForms.isRegister = true;
         return;
       }
 
-      alert('Logueado');
+      alert('¡Usuario creado correctamente!');
     });
 
     console.log('form');

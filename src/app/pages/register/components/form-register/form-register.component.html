@@ -1,14 +1,36 @@
 <div class="container-principal">
   <form [formGroup]="form" align="center" (submit)="handleSubmit()">
-    <div>
-      <input
-        type="text"
-        formControlName="userName"
-        class="my-shop-input"
-        placeholder="Nombre de usuario"
-        required
-      />
-    </div>
+    <input
+      type="text"
+      formControlName="firstName"
+      class="my-shop-input"
+      placeholder="Nombres"
+      required
+    />
+
+    <input
+      type="text"
+      formControlName="lastName"
+      class="my-shop-input"
+      placeholder="Apellidos"
+      required
+    />
+
+    <input
+      type="text"
+      formControlName="userName"
+      class="my-shop-input"
+      placeholder="Nombre de usuario"
+      required
+    />
+
+    <input
+      type="email"
+      formControlName="email"
+      class="my-shop-input"
+      placeholder="Correo electrónico"
+      required
+    />
 
     <div>
       <div class="my-shop-input">
@@ -34,14 +56,22 @@
       </div>
     </div>
 
+    <input
+      type="tel"
+      formControlName="phone"
+      class="my-shop-input"
+      placeholder="Teléfono"
+      required
+    />
+
     <app-errors-forms
       *ngIf="errorForms.isInValidForm"
       message="Complete correctamente todos los campos"
     ></app-errors-forms>
 
     <app-errors-forms
-      *ngIf="errorForms.isLogin"
-      message="Usuario o contraseña incorrectos"
+      *ngIf="errorForms.isRegister"
+      message="Error al registarse, verifica que todos los campos esten correctos"
     ></app-errors-forms>
 
     <button class="my-shop-button" type="submit">Ingresar</button>

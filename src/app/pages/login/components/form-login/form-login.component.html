@@ -1,37 +1,33 @@
 <div class="container-principal">
   <form [formGroup]="form" align="center" (submit)="handleSubmit()">
-    <div>
+    <input
+      type="text"
+      formControlName="userName"
+      class="my-shop-input"
+      placeholder="Nombre de usuario"
+      required
+    />
+
+    <div class="my-shop-input">
       <input
-        type="text"
-        formControlName="userName"
-        class="my-shop-input"
-        placeholder="Nombre de usuario"
+        [type]="isShowPassword ? 'text' : 'password'"
+        class="my-shop-input-password"
+        placeholder="Contraseñas"
+        formControlName="password"
+        maxlength="40"
         required
       />
-    </div>
+      <ion-icon
+        *ngIf="!isShowPassword"
+        name="eye-outline"
+        (click)="showPassword()"
+      ></ion-icon>
 
-    <div>
-      <div class="my-shop-input">
-        <input
-          [type]="isShowPassword ? 'text' : 'password'"
-          class="my-shop-input-password"
-          placeholder="Contraseñas"
-          formControlName="password"
-          maxlength="40"
-          required
-        />
-        <ion-icon
-          *ngIf="!isShowPassword"
-          name="eye-outline"
-          (click)="showPassword()"
-        ></ion-icon>
-
-        <ion-icon
-          *ngIf="isShowPassword"
-          name="eye-off-outline"
-          (click)="showPassword()"
-        ></ion-icon>
-      </div>
+      <ion-icon
+        *ngIf="isShowPassword"
+        name="eye-off-outline"
+        (click)="showPassword()"
+      ></ion-icon>
     </div>
 
     <app-errors-forms

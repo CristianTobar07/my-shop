@@ -1,5 +1,4 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
-@import "bootstrap/dist/css/bootstrap.min.css";
 
 :root {
   --primary-color: #34495e;
@@ -38,10 +37,10 @@ ion-icon {
 
 .my-shop-input {
   display: flex;
+  align-items: center;
   border: 1px solid var(--secondary-color);
   border-radius: 5px;
   padding: 7px 15px;
-  width: 100%;
   color: var(--primary-color);
   outline: none;
 }
@@ -61,7 +60,7 @@ ion-icon {
   display: flex;
   outline: none;
   border: none;
-  width: 100%;
+  width: 95%;
 }
 
 .my-shop-input-password::placeholder {
@@ -72,11 +71,12 @@ ion-icon {
 /* Buttons */
 
 .my-shop-button {
+  width: 100%;
   border: none;
   outline: none;
   background-color: var(--primary-color);
   color: var(--neutral-color);
-  padding: 7px;
+  padding: 7px 15px;
   border-radius: 5px;
 }
 

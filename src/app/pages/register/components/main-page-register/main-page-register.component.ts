@@ -1,16 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { NavbarComponent } from '../../../home/components/navbar/navbar.component';
 import { TitlesComponent } from '../../../../shared/components/titles/titles.component';
-import { FormLoginComponent } from '../form-login/form-login.component';
+import { FormRegisterComponent } from '../form-register/form-register.component';
 
 @Component({
   selector: 'app-login',
-  templateUrl: './main-pagelogin.component.html',
-  styleUrls: ['./main-pagelogin.component.css'],
+  templateUrl: './main-page-register.component.html',
+  styleUrls: [],
   standalone: true,
-  imports: [NavbarComponent, TitlesComponent, FormLoginComponent],
+  imports: [NavbarComponent, TitlesComponent, FormRegisterComponent],
 })
-export class MainPageLoginComponent implements OnInit {
+export class MainPageRegisterComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {}
