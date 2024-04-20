@@ -68,6 +68,7 @@ export class FormLoginComponent implements OnInit, OnDestroy {
 
     if (this.form.invalid) {
       this.errorForms.isInValidForm = true;
+      return;
     }
 
     const body: LoginRequest = {
@@ -81,11 +82,11 @@ export class FormLoginComponent implements OnInit, OnDestroy {
         return;
       }
 
-      if (body.username === 'kate_h' && body.password === 'kfejk@*_') {
+      if (body.username === 'hopkins' && body.password === 'William56$hj') {
         this.router.navigate([ROUTES.ADMIN]);
         return;
       } else {
-        this.router.navigate([ROUTES.USER]);
+        this.router.navigate([ROUTES.USER + '/products']);
       }
     });
   }

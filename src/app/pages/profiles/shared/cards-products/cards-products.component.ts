@@ -85,4 +85,9 @@ export class CardsProductsComponent implements OnInit {
       this.store.dispatch(setAddProductInCartShop({ product }));
     }
   }
+
+  showProduct(product: Product) {
+    this.store.dispatch(showModalProduct({ value: true }));
+    this.store.dispatch(selectProduct({ product }));
+  }
 }

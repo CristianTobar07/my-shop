@@ -60,6 +60,14 @@ p {
   gap: 20px;
 }
 
+.title-product-user {
+  cursor: default;
+}
+
+.title-product-user:hover {
+  border-bottom: 1px solid var(--placeholder-color);
+}
+
 .cart-shop {
   padding: 5px;
   font-size: 40px;
@@ -68,6 +76,7 @@ p {
   justify-content: center;
   border: 1px solid var(--secondary-color);
   border-radius: 5px;
+  z-index: 1;
 }
 
 .button-buy {

@@ -6,6 +6,15 @@
     <h1
       class="my-shop-title-body my-shop-title-responsive"
       title=" {{ product.title }}"
+      *ngIf="!idRole"
+    >
+      {{ product.title }}
+    </h1>
+    <h1
+      class="my-shop-title-body my-shop-title-responsive title-product-user"
+      title=" {{ product.title }}"
+      *ngIf="idRole"
+      (click)="showProduct(product)"
     >
       {{ product.title }}
     </h1>
