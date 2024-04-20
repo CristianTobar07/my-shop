@@ -1,1 +1,8 @@
+<app-loading [isLoading]="isLoading"></app-loading>
 <app-header-user></app-header-user>
+<app-product
+  *ngIf="isShowModalProduct"
+  [product]="product"
+  [isEdit]="isEdit"
+></app-product>
+<router-outlet></router-outlet>

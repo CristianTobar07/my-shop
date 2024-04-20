@@ -16,8 +16,13 @@
   </section>
 
   <section class="container-buttons" *ngIf="!idRole">
-    <button (click)="selectProduct(product, 1)">Ver</button>
-    <button (click)="selectProduct(product, 2)">Editar</button>
-    <button (click)="deleteProduct(product.id)">Eliminar</button>
+    <button class="button" (click)="selectProduct(product, 1)">Ver</button>
+    <button class="button" (click)="selectProduct(product, 2)">Editar</button>
+    <button class="button" (click)="deleteProduct(product.id)">Eliminar</button>
+  </section>
+
+  <section class="container-buttons container-button-user" *ngIf="idRole">
+    <ion-icon name="cart-outline" class="cart-shop"></ion-icon>
+    <button class="my-shop-button">Comprar</button>
   </section>
 </div>

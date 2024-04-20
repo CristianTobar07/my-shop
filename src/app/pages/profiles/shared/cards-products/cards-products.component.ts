@@ -1,5 +1,6 @@
 import { DecimalPipe, NgIf } from '@angular/common';
 import { Component, OnInit, Input } from '@angular/core';
+import { IonicModule } from '@ionic/angular';
 import { Store } from '@ngrx/store';
 import { Product } from 'pages/login/models';
 import {
@@ -15,7 +16,7 @@ import { AppState } from 'store/app.state';
   templateUrl: './cards-products.component.html',
   styleUrls: ['./cards-products.component.css'],
   standalone: true,
-  imports: [NgIf, DecimalPipe],
+  imports: [NgIf, DecimalPipe, IonicModule],
 })
 export class CardsProductsComponent implements OnInit {
   @Input() product?: Product = undefined;

@@ -40,16 +40,35 @@ p {
   gap: 10px;
 }
 
-button {
+.button {
   background-color: transparent;
   border: none;
   outline: none;
 }
 
-button:hover {
+.button:hover {
   border-bottom: 1px solid var(--primary-color);
 }
 
-button:active {
+.button:active {
   opacity: 0.5;
+}
+
+/* Role user */
+
+.container-button-user {
+  gap: 20px;
+}
+
+.cart-shop {
+  padding: 5px;
+  font-size: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--secondary-color);
+}
+
+.button-buy {
+  background-color: var(--primary-color);
 }
