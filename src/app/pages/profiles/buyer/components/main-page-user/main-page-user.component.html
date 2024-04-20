@@ -7,8 +7,30 @@
 ></app-product>
 <div class="container-body">
   <section class="container-add-product">
+    <div
+      class="button-count"
+      [routerLink]="['./products']"
+      [routerLinkActive]="'button-count-active '"
+    >
+      <div class="container-name-button">
+        <span>Productos</span>
+      </div>
+    
+    </div>
+    <div
+      class="button-count"
+      [routerLink]="['./cart-shop']"
+      [routerLinkActive]="'button-count-active '"
+    >
+      <div class="container-name-button">
+        <span> Carrito de compras</span>
+      </div>
+      <div class="div">{{ totalProductInCartShop }}</div>
+    </div>
     <div class="button-count">
-      <div>Carrito de compras</div>
+      <div class="container-name-button">
+        <span> Historial de compras</span>
+      </div>
       <div class="div">1</div>
     </div>
   </section>

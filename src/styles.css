@@ -7,7 +7,7 @@
   --neutral-color: #ffffff;
   --font-name: "Poppins", sans-serif;
   --size-title: 35px;
-  --size-title-body: 20px;
+  --size-title-body: 25px;
   --size-subtitle: 17px;
   --size-content: 16px;
 }
@@ -20,10 +20,12 @@ html {
 
 body,
 button,
-input {
+input,
+p {
   font-family: var(--font-name);
   font-size: var(--size-content);
   margin: 0;
+  color: var(--primary-color);
 }
 
 /* Scroll */

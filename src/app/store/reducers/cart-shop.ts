@@ -3,6 +3,7 @@ import { InitialStateCartShopComponent } from '../models';
 import {
   setAddProductInCartShop,
   setCartShopData,
+  setDeleteProductInCartShop,
 } from 'store/actions/cart-shop';
 import { saveDataStorage } from 'shared/middleware/store-data.middleware';
 
@@ -28,6 +29,16 @@ export const cartShopReducer = createReducer(
     return {
       ...state,
       productsCartShop: newProducts,
+    };
+  }),
+  on(setDeleteProductInCartShop, (state, { product }) => {
+    const newProducts = [...state.productsCartShop];
+    const filter = newProducts.filter((item) => item.id !== product.id);
+    saveDataStorage('cartShopData', filter);
+
+    return {
+      ...state,
+      productsCartShop: filter,
     };
   })
 );

@@ -1,3 +1,46 @@
-<p>
-  cart-shop works!
-</p>
+<div class="container-principal">
+  <app-titles [title]="'Carrito de compras'"></app-titles>
+  <p>Tienes {{ dataCartShop.length }} productos agregados</p>
+  <section
+    class="container-products-quantity"
+    *ngFor="let product of dataCartShop"
+  >
+    <img src="{{ product.image }}" alt="" width="100%" height="100%" />
+
+    <div>
+      <h1 class="my-shop-title-body">{{ product.title }}</h1>
+      <p class="p-description">
+        {{ product.description }}
+      </p>
+
+      <section class="section-price-count-delete">
+        <div>
+          <strong>Precio:</strong> <span>{{ product.price | number }}</span>
+        </div>
+
+        <div class="container-quantity">
+          <button class="button" (click)="handlecount(product, -1)">-</button>
+          <div>
+            <strong>{{ product.countPayment }}</strong>
+          </div>
+          <button class="button" (click)="handlecount(product, 1)">+</button>
+        </div>
+
+        <button
+          class="my-shop-button-white"
+          (click)="handleDeleteCartShop(product)"
+        >
+          Eliminar
+        </button>
+      </section>
+    </div>
+  </section>
+
+  <section class="total-price">
+    <div><span>Total a pagar: </span></div>
+    <div>
+      <span>$ {{ totalPrice | number }}</span>
+    </div>
+    <button class="my-shop-button">Comprar ahora</button>
+  </section>
+</div>

@@ -11,8 +11,12 @@ export interface LoginRequest {
 export interface Product {
   id: number;
   title: string;
-  price: number;
+  price: string;
   description: string;
   image: string;
-  count: number;
+  count: string;
+}
+
+export interface ProductsToPayment extends Product {
+  countPayment: number;
 }
