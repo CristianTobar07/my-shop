@@ -1,16 +1,8 @@
-<div class="container-body">
-  <section class="container-add-product">
-    <div class="button-count">
-      <div>Carrito de compras</div>
-      <div class="div">1</div>
-    </div>
-  </section>
-
-  <section class="container-products">
-    <app-cards-products
-      *ngFor="let product of products"
-      [product]="product"
-      [idRole]="2"
-    ></app-cards-products>
-  </section>
-</div>
+<section class="container-products">
+  <app-cards-products
+    *ngFor="let product of products"
+    [product]="product"
+    [idRole]="2"
+    [isInCartShop]="isInCartShop"
+  ></app-cards-products>
+</section>

@@ -22,7 +22,17 @@
   </section>
 
   <section class="container-buttons container-button-user" *ngIf="idRole">
-    <ion-icon name="cart-outline" class="cart-shop"></ion-icon>
-    <button class="my-shop-button">Comprar</button>
+    <ion-icon
+      name="cart-outline"
+      class="cart-shop"
+      (click)="addCartShop(product)"
+    ></ion-icon>
+    <button
+      class="my-shop-button"
+      (click)="buyProduct(product)"
+      [routerLink]="['../cart-shop']"
+    >
+      Comprar
+    </button>
   </section>
 </div>

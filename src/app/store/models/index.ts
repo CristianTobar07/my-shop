@@ -24,3 +24,10 @@ export interface InitialStateProductsComponent {
   isEdit: boolean;
   isNew: boolean;
 }
+
+// Cart Shop
+
+export interface InitialStateCartShopComponent {
+  productsCartShop: Product[];
+  isInCartShop: boolean;
+}

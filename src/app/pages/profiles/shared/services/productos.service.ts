@@ -2,18 +2,15 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Product } from 'pages/login/models';
-import { Subject } from 'rxjs';
 import { BASE_URL } from 'shared/constants';
 import { setIsLoading } from 'store/actions/loading.actions';
 import { setProducts } from 'store/actions/products.action';
 import { AppState } from 'store/app.state';
-import { dataProducts } from '../constants';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProductosService {
-  private _getAllProducts$ = new Subject<boolean>();
   constructor(private http: HttpClient, private store: Store<AppState>) {}
 
   getAllProducts() {

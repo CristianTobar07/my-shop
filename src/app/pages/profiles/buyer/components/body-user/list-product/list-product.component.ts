@@ -10,7 +10,7 @@ import {
   showModalProduct,
 } from 'store/actions/products.action';
 import { AppState } from 'store/app.state';
-import { selecProducts } from 'store/selectors';
+import { selecProducts, selectCartShop } from 'store/selectors';
 
 @Component({
   selector: 'app-list-product',
@@ -21,25 +21,30 @@ import { selecProducts } from 'store/selectors';
 })
 export class ListProductComponent implements OnInit, OnDestroy {
   products: Product[] = [];
+  isInCartShop: boolean = false;
 
   suscription: Subscription[] = [];
 
   constructor(private store: Store<AppState>) {}
 
   ngOnInit() {
-    const suscription = this.store.select(selecProducts).subscribe((data) => {
+    const suscription1 = this.store.select(selecProducts).subscribe((data) => {
       this.products = data.products;
     });
-    this.suscription.push(suscription);
-  }
-
-  ngOnDestroy(): void {
-    this.suscription.forEach((suscription) => suscription.unsubscribe());
+    const suscription2 = this.store.select(selectCartShop).subscribe((data) => {
+      this.isInCartShop = data.isInCartShop;
+    });
+    this.suscription.push(suscription1);
+    this.suscription.push(suscription2);
   }
 
   addproduct() {
     this.store.dispatch(showModalProduct({ value: true }));
     this.store.dispatch(selectProduct({ product: undefined }));
     this.store.dispatch(setIsEditNewProduct({ isEdit: false, isNew: true }));
+  }
+
+  ngOnDestroy(): void {
+    this.suscription.forEach((suscription) => suscription.unsubscribe());
   }
 }

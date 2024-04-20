@@ -1,5 +1,5 @@
 import { Product } from 'pages/login/models';
 
-export const saveDataStorage = (products: Product[]) => {
-  localStorage.setItem('@products', JSON.stringify(products));
+export const saveDataStorage = (keyName: string,products: Product[]) => {
+  localStorage.setItem(`@${keyName}`, JSON.stringify(products));
 };

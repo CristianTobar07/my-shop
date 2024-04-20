@@ -60,7 +60,7 @@ export const productsReducer = createReducer(
 
     productRef.push({ ...product, id: state.products.length + 1 });
 
-    saveDataStorage(productRef);
+    saveDataStorage('products', productRef);
 
     return {
       ...state,
@@ -102,7 +102,7 @@ export const productsReducer = createReducer(
   // Delete product
   on(deleteProduct, (state, { id }) => {
     const newProducts = state.products.filter((product) => product.id !== id);
-    saveDataStorage(newProducts);
+    saveDataStorage('products', newProducts);
     return {
       ...state,
       products: newProducts,

@@ -1,6 +1,7 @@
 import { createSelector } from '@ngrx/store';
 import { AppState } from '../app.state';
 import {
+  InitialStateCartShopComponent,
   InitialStateErrorMessage,
   InitialStateLoadinComponent,
   InitialStateProductsComponent,
@@ -29,4 +30,13 @@ const selectProductsComponent = (state: AppState) => state.products;
 export const selecProducts = createSelector(
   selectProductsComponent,
   (state: InitialStateProductsComponent) => state
+);
+
+// Cart Shop
+
+const selectCartShopComponent = (state: AppState) => state.cartShop;
+
+export const selectCartShop = createSelector(
+  selectCartShopComponent,
+  (state: InitialStateCartShopComponent) => state
 );

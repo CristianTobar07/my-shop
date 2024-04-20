@@ -18,6 +18,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
   isErrorAlert: boolean = false;
   message: string = '';
+  good: boolean = false;
 
   suscription: Subscription = new Subscription();
 
@@ -29,6 +30,7 @@ export class AppComponent implements OnInit, OnDestroy {
       .subscribe((data) => {
         this.isErrorAlert = data.isError;
         this.message = data.message;
+        this.good = data.good;
       });
   }
 

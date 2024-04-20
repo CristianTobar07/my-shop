@@ -10,6 +10,7 @@ import { selecProducts, selectLoading } from 'store/selectors';
 import { LoadingComponent } from 'shared/components/loading/loading.component';
 import { NgIf } from '@angular/common';
 import { ProductComponent } from 'pages/profiles/shared/product/product.component';
+import { CartShopService } from '../../services/cart-shop.service';
 
 @Component({
   selector: 'app-main-page-user',
@@ -34,11 +35,13 @@ export class MainPageUserComponent implements OnInit {
 
   constructor(
     private productsservice: ProductosService,
+    private cartshopservice: CartShopService,
     private store: Store<AppState>
   ) {}
 
   ngOnInit() {
     this.productsservice.getAllProducts();
+    this.cartshopservice.getDataCartShop();
 
     const suscription1 = this.store.select(selectLoading).subscribe((data) => {
       this.isLoading = data.isLoading;

@@ -1,2 +1,6 @@
-<app-floting-alert *ngIf="isErrorAlert" [message]="message"></app-floting-alert>
+<app-floting-alert
+  *ngIf="isErrorAlert"
+  [message]="message"
+  [good]="good"
+></app-floting-alert>
 <router-outlet></router-outlet>
