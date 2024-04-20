@@ -67,6 +67,7 @@ p {
   align-items: center;
   justify-content: center;
   border: 1px solid var(--secondary-color);
+  border-radius: 5px;
 }
 
 .button-buy {

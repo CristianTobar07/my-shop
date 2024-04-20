@@ -19,3 +19,15 @@ export const setDeleteProductInCartShop = createAction(
   '[Data setDeleteProductInCartShop] setDeleteProductInCartShop',
   props<{ product: ProductsToPayment }>()
 );
+
+// Buy now
+
+export const setBuyProducts = createAction(
+  '[Data SetBuyProducts] setBuyProducts',
+  props<{ product: ProductsToPayment[] }>()
+);
+
+export const setPurchaseData = createAction(
+  '[Data SetPurchaseData] setPurchaseData',
+  props<{ purchaseData: ProductsToPayment[] }>()
+);

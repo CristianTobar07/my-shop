@@ -1,6 +1,6 @@
 .constainer-principal-flotante {
   display: scroll;
-  position: absolute;
+  position: fixed;
   top: 16vh;
   right: 5vw;
   padding-inline: 1vw;

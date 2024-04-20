@@ -1,10 +1,15 @@
-import { DecimalPipe, NgFor } from '@angular/common';
+import { DecimalPipe, NgFor, NgIf } from '@angular/common';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { ProductsToPayment } from 'pages/login/models';
 import { Subscription } from 'rxjs';
 import { TitlesComponent } from 'shared/components/titles/titles.component';
-import { setDeleteProductInCartShop } from 'store/actions/cart-shop';
+import {
+  setBuyProducts,
+  setDeleteProductInCartShop,
+} from 'store/actions/cart-shop';
+import { setIsErrorMessage } from 'store/actions/error-message.actions';
+import { setIsLoading } from 'store/actions/loading.actions';
 import { AppState } from 'store/app.state';
 import { selectCartShop } from 'store/selectors';
 
@@ -13,7 +18,7 @@ import { selectCartShop } from 'store/selectors';
   templateUrl: './cart-shop.component.html',
   styleUrls: ['./cart-shop.component.css'],
   standalone: true,
-  imports: [NgFor, TitlesComponent, DecimalPipe],
+  imports: [NgFor, NgIf, TitlesComponent, DecimalPipe],
 })
 export class CartShopComponent implements OnInit, OnDestroy {
   dataCartShop: ProductsToPayment[] = [];
@@ -59,6 +64,22 @@ export class CartShopComponent implements OnInit, OnDestroy {
   handleDeleteCartShop(product: ProductsToPayment) {
     this.store.dispatch(setDeleteProductInCartShop({ product }));
     this.handleTotalPrice();
+  }
+
+  handleBuyNow() {
+    // This timeout is for simulated a call in backend
+    this.store.dispatch(setIsLoading({ value: true }));
+    setTimeout(() => {
+      this.store.dispatch(setBuyProducts({ product: this.dataCartShop }));
+      this.store.dispatch(
+        setIsErrorMessage({
+          message: '¡Compra exitosa!',
+          good: true,
+        })
+      );
+
+      this.store.dispatch(setIsLoading({ value: false }));
+    }, 2000);
   }
 
   ngOnDestroy(): void {

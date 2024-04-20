@@ -33,6 +33,7 @@ export class MainPageUserComponent implements OnInit {
   product?: Product;
   isEdit: boolean = false;
   totalProductInCartShop: number = 0;
+  totalProductInPurchase: number = 0;
 
   suscription: Subscription[] = [];
 
@@ -40,11 +41,21 @@ export class MainPageUserComponent implements OnInit {
     private productsservice: ProductosService,
     private cartshopservice: CartShopService,
     private store: Store<AppState>
-  ) {}
+  ) {
+    const suscription3 = this.store.select(selectCartShop).subscribe((data) => {
+      this.totalProductInCartShop = data.productsCartShop.length;
+      this.totalProductInPurchase = data.productsCartShop.length;
+
+      console.log({ length: data.purchaseData.length });
+    });
+
+    this.suscription.push(suscription3);
+  }
 
   ngOnInit() {
     this.productsservice.getAllProducts();
     this.cartshopservice.getDataCartShop();
+    this.cartshopservice.getDataPurchase();
 
     const suscription1 = this.store.select(selectLoading).subscribe((data) => {
       this.isLoading = data.isLoading;
@@ -58,6 +69,7 @@ export class MainPageUserComponent implements OnInit {
 
     const suscription3 = this.store.select(selectCartShop).subscribe((data) => {
       this.totalProductInCartShop = data.productsCartShop.length;
+      this.totalProductInPurchase = data.purchaseData.length;
     });
 
     this.suscription.push(suscription1);

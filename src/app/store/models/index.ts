@@ -1,6 +1,6 @@
 // Loading component
 
-import { Product } from 'pages/login/models';
+import { Product, ProductsToPayment } from 'pages/login/models';
 
 export interface InitialStateLoadinComponent {
   isLoading: boolean;
@@ -29,5 +29,5 @@ export interface InitialStateProductsComponent {
 
 export interface InitialStateCartShopComponent {
   productsCartShop: Product[];
-  isInCartShop: boolean;
+  purchaseData: ProductsToPayment[];
 }

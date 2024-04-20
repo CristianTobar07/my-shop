@@ -15,7 +15,6 @@
       <div class="container-name-button">
         <span>Productos</span>
       </div>
-    
     </div>
     <div
       class="button-count"
@@ -25,13 +24,21 @@
       <div class="container-name-button">
         <span> Carrito de compras</span>
       </div>
-      <div class="div">{{ totalProductInCartShop }}</div>
+      <div *ngIf="totalProductInCartShop > 0" class="div">
+        {{ totalProductInCartShop }}
+      </div>
     </div>
-    <div class="button-count">
+    <div
+      class="button-count"
+      [routerLink]="['./shopping-history']"
+      [routerLinkActive]="'button-count-active '"
+    >
       <div class="container-name-button">
         <span> Historial de compras</span>
       </div>
-      <div class="div">1</div>
+      <div class="div" *ngIf="totalProductInPurchase > 0">
+        {{ totalProductInPurchase }}
+      </div>
     </div>
   </section>
 

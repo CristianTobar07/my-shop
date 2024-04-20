@@ -36,11 +36,13 @@
     </div>
   </section>
 
-  <section class="total-price">
+  <section class="total-price" *ngIf="dataCartShop.length > 0">
     <div><span>Total a pagar: </span></div>
     <div>
       <span>$ {{ totalPrice | number }}</span>
     </div>
-    <button class="my-shop-button">Comprar ahora</button>
+    <button class="my-shop-button" (click)="handleBuyNow()">
+      Comprar ahora
+    </button>
   </section>
 </div>

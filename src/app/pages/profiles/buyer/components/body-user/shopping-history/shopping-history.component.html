@@ -1,0 +1,26 @@
+<div class="container-principal">
+  <app-titles [title]="'Historial de compras'"></app-titles>
+  <p>Tienes {{ purchaseData.length }} productos agregados</p>
+  <section
+    class="container-products-quantity"
+    *ngFor="let product of purchaseData"
+  >
+    <img src="{{ product.image }}" alt="" width="100%" height="100%" />
+
+    <div>
+      <h1 class="my-shop-title-body">{{ product.title }}</h1>
+      <p class="p-description">
+        {{ product.description }}
+      </p>
+
+      <div>
+        <strong>Precio:</strong> <span>{{ product.price | number }}</span>
+      </div>
+
+      <div>
+        <strong>Cantidad:</strong>
+        <span>{{ product.countPayment | number }}</span>
+      </div>
+    </div>
+  </section>
+</div>

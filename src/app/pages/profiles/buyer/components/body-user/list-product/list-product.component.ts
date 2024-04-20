@@ -21,7 +21,6 @@ import { selecProducts, selectCartShop } from 'store/selectors';
 })
 export class ListProductComponent implements OnInit, OnDestroy {
   products: Product[] = [];
-  isInCartShop: boolean = false;
 
   suscription: Subscription[] = [];
 
@@ -31,11 +30,8 @@ export class ListProductComponent implements OnInit, OnDestroy {
     const suscription1 = this.store.select(selecProducts).subscribe((data) => {
       this.products = data.products;
     });
-    const suscription2 = this.store.select(selectCartShop).subscribe((data) => {
-      this.isInCartShop = data.isInCartShop;
-    });
+
     this.suscription.push(suscription1);
-    this.suscription.push(suscription2);
   }
 
   addproduct() {

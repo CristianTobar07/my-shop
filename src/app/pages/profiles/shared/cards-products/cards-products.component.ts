@@ -26,7 +26,6 @@ import { selectCartShop } from 'store/selectors';
 export class CardsProductsComponent implements OnInit {
   @Input() product?: Product = undefined;
   @Input() idRole?: number;
-  @Input() isInCartShop?: boolean;
 
   productCarShop: Product[] = [];
 

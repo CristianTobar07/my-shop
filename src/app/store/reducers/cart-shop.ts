@@ -2,14 +2,16 @@ import { createReducer, on } from '@ngrx/store';
 import { InitialStateCartShopComponent } from '../models';
 import {
   setAddProductInCartShop,
+  setBuyProducts,
   setCartShopData,
   setDeleteProductInCartShop,
+  setPurchaseData,
 } from 'store/actions/cart-shop';
 import { saveDataStorage } from 'shared/middleware/store-data.middleware';
 
 export const initialStateCartShop: InitialStateCartShopComponent = {
   productsCartShop: [],
-  isInCartShop: false,
+  purchaseData: [],
 };
 
 export const cartShopReducer = createReducer(
@@ -39,6 +41,26 @@ export const cartShopReducer = createReducer(
     return {
       ...state,
       productsCartShop: filter,
+    };
+  }),
+  // Buy product
+  on(setBuyProducts, (state, { product }) => {
+    const newDataPurchase = [...state.purchaseData, ...product];
+
+    saveDataStorage('cartShopData', []);
+    saveDataStorage('shoppingHistory', newDataPurchase);
+
+    return {
+      ...state,
+      productsCartShop: [],
+      purchaseData: newDataPurchase,
+    };
+  }),
+  // Purchase data
+  on(setPurchaseData, (state, { purchaseData }) => {
+    return {
+      ...state,
+      purchaseData,
     };
   })
 );
