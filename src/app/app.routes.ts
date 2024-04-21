@@ -17,5 +17,5 @@ export const routes: Routes = [
     loadChildren: () =>
       import('pages/profiles/buyer/buyer.routes').then((route) => route.routes),
   },
-  { path: '*', redirectTo: '' },
+  { path: '**', redirectTo: '' },
 ];

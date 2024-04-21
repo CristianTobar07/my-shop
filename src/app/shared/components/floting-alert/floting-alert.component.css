@@ -1,12 +1,11 @@
 .constainer-principal-flotante {
   display: scroll;
   position: fixed;
-  top: 16vh;
-  right: 5vw;
-  padding-inline: 1vw;
-  padding-block: 1.3vw;
+  top: 50px;
+  right: 20px;
+  padding-block: 15px 15px;
   width: 30%;
-  font-size: 1.3vw;
+  font-size: var(--size-content);
   font-style: normal;
   font-weight: 600;
   border-radius: 10px;
@@ -33,7 +32,10 @@
 }
 
 .container-icon-warning {
+  display: flex;
+  align-items: center;
   width: 15%;
+  height: 100%;
 }
 
 .container-icon-warning img {
@@ -41,13 +43,16 @@
 }
 
 .container-text-message-alert {
+  display: flex;
+  align-items: center;
   width: 85%;
   padding-left: 3%;
+  margin-bottom: 10px;
 }
 
 .container-icon-close {
   width: 6%;
-  margin-top: -1vw;
+  margin-top: 5px;
   border-radius: 100%;
   cursor: pointer;
 }
@@ -57,12 +62,12 @@
 }
 
 .icon {
-  font-size: 50px;
+  font-size: 40px;
   color: #00de97;
 }
 
 .icon-error {
-  font-size: 50px;
+  font-size: 40px;
   color: var(--primary-color);
 }
 

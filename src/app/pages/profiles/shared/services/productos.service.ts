@@ -20,15 +20,16 @@ export class ProductosService {
       .subscribe({
         next: (response) => {
           const products = localStorage.getItem('@products');
-
           this.store.dispatch(
             setProducts({ data: products ? JSON.parse(products) : [] })
           );
           this.store.dispatch(setIsLoading({ value: false }));
         },
         error: (error) => {
-          console.log(error.error.code);
-
+          const products = localStorage.getItem('@products');
+          this.store.dispatch(
+            setProducts({ data: products ? JSON.parse(products) : [] })
+          );
           this.store.dispatch(setIsLoading({ value: false }));
         },
       });

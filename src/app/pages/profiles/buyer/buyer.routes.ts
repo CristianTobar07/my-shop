@@ -15,6 +15,7 @@ export const routes: Routes = [
         path: 'shopping-history',
         component: ShoppingHistoryComponent,
       },
+      { path: '**', redirectTo: 'products' },
     ],
   },
 ];

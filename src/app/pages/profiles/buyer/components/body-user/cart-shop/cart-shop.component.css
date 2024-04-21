@@ -1,6 +1,6 @@
 .container-principal {
-  width: 90%;
-  margin-left: 5%;
+  width: 80%;
+  margin-left: 10%;
 }
 
 .container-products-quantity {
@@ -59,11 +59,9 @@ span {
 /* Total price */
 
 .total-price {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  gap: 30px;
-  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 15px;
 
   & div {
     font-size: var(--size-title-body);
@@ -72,6 +70,7 @@ span {
   }
 
   & button {
-    width: 30%;
+    width: 100%;
+    padding: 10px;
   }
 }

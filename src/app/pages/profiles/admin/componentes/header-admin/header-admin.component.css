@@ -20,3 +20,9 @@ header {
 .icon {
   font-size: var(--size-title);
 }
+
+@media only screen and (max-width: 500px) {
+  header {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  }
+}

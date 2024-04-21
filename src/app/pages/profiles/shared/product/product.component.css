@@ -65,12 +65,14 @@ textarea {
 }
 
 @media only screen and (max-width: 767px) {
-  /* Estilos para dispositivos móviles (menos de 768px de ancho) */
-  /* Por ejemplo: */
-
   .container-products {
-    width: 90%;
+    width: 85%;
     margin-left: 5%;
+    padding-bottom: 5%;
+  }
+
+  textarea {
+    width: 96%;
   }
 
   .container-image {
