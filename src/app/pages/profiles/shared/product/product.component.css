@@ -2,7 +2,7 @@
   display: scroll;
   position: fixed;
   width: 55%;
-  margin-top: 1%;
+  margin-block: 2%;
   margin-left: 20%;
   padding: 3%;
   background-color: var(--neutral-color);
