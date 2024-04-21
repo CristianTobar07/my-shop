@@ -77,10 +77,10 @@ export class FormLoginComponent implements OnInit, OnDestroy {
     };
 
     this.suscription = this.loginservice.setLogin(body).subscribe((res) => {
-      if (!res) {
-        this.errorForms.isLogin = true;
-        return;
-      }
+      // if (!res) {
+      //   this.errorForms.isLogin = true;
+      //   return;
+      // }
 
       if (body.username === 'hopkins' && body.password === 'William56$hj') {
         this.router.navigate([ROUTES.ADMIN]);
